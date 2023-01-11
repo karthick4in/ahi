@@ -6,16 +6,19 @@ function capitalizeFirstLetter(string) {
     return string[0].toUpperCase() + string.slice(1);
 }
 
-const importView = subreddit =>
-    lazy(() =>
-        import(`../pages/${subreddit}`)
-            .catch(() => import(`../views/NullView`))
+const importView = page =>
+    lazy(() => {
+        page = page || "";
+        page = page.replaceAll(" ", "_").split("_")?.map(a => capitalizeFirstLetter(a)).join("");
+        return import(`../pages/${page}`)
+            .catch(() => import(`../pages/NoPage`))
+    }
     );
 
 const importView2 = (folder, page) =>
     lazy(() => {
-        page = page  || "";
-        page = page.replaceAll(" " , "_").split("_")?.map(a => capitalizeFirstLetter(a)).join("");
+        page = page || "";
+        page = page.replaceAll(" ", "_").split("_")?.map(a => capitalizeFirstLetter(a)).join("");
         return import(`../pages/${folder}/${page}`)
             .catch(() => import(`../pages/NoPage`))
     }
@@ -27,7 +30,7 @@ const Router1 = () => {
     // var params = 1;
     var userId = params.userId;
     const subredditsToShow = [
-        'Blogs', userId
+        userId
     ];
     const [views, setViews] = useState([]);
     useEffect(() => {
@@ -45,7 +48,7 @@ const Router1 = () => {
     }, []);
 
     return <>
-        <h1>Pages {userId} sss</h1>;
+        {/* <h1>Pages {userId} sss</h1>; */}
         <React.Suspense fallback="Loading views...">
             <div className="container">  {views}</div>
         </React.Suspense>
@@ -73,7 +76,6 @@ const Router2 = () => {
     }, []);
 
     return <>
-        <h1>Pages  sss</h1>;
         <React.Suspense fallback="Loading views...">
             <div className="container">  {views}</div>
         </React.Suspense>
