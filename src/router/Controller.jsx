@@ -3,29 +3,8 @@ import shortid from 'shortid';
 import { BrowserRouter, Routes, Route, Outlet, Link, useParams } from "react-router-dom";
 import  {Router1,Router2}  from "./Router";
 
-
-const importView = subreddit =>
-    lazy(() =>
-        import(`../views/${subreddit}View`)
-            .catch(() => import(`../views/NullView`))
-    );
-
-export default function Controller({ subredditsToShow }) { 
-    const [views, setViews] = useState([]);
-    useEffect(() => {
-        async function loadViews() {
-            const componentPromises = subredditsToShow.map(async subreddit => {
-                console.log(subreddit);
-                const View = await importView(subreddit);
-                return <View key={shortid.generate()} />;
-            });
-
-            Promise.all(componentPromises).then(setViews);
-        }
-
-        loadViews();
-    }, [subredditsToShow]);
-
+ 
+export default function Controller() { 
     return (
         <>
             <BrowserRouter>

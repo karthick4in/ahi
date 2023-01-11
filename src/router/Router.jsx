@@ -77,7 +77,7 @@ const Router2 = () => {
 
     return <>
         <React.Suspense fallback="Loading views...">
-            <div className="container">  {views}</div>
+              {views} 
         </React.Suspense>
     </>
 };
