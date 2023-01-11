@@ -25,9 +25,17 @@ const importView2 = (folder, page) =>
     }
     );
 
-const Router1 = () => {
 
-    var params = useParams();
+const importView3 = page =>
+    lazy(() => {
+        page = page || "";
+        page = page.replaceAll(" ", "_").split("_")?.map(a => capitalizeFirstLetter(a)).join("");
+        return import(`../pages/view/${page}`)
+            .catch(() => import(`../pages/NoPage`))
+    }
+    );
+
+const Router1 = () => {
     // var params = 1;
     var userId = params.userId;
     const subredditsToShow = [
@@ -39,6 +47,37 @@ const Router1 = () => {
             const componentPromises = subredditsToShow.map(async subreddit => {
                 console.log(subreddit);
                 const View = await importView(subreddit);
+                return <View key={shortid.generate()} />;
+            });
+
+            Promise.all(componentPromises).then(setViews);
+        }
+
+        loadViews();
+    }, []);
+
+    return <>
+        {/* <h1>Pages {userId} sss</h1>; */}
+        <React.Suspense fallback="Loading views...">
+            <div className="container">  {views}</div>
+        </React.Suspense>
+    </>
+};
+
+const Router3 = () => {
+
+    var params = useParams();
+    // var params = 1;
+    var userId = params.router2;
+    const subredditsToShow = [
+        userId
+    ];
+    const [views, setViews] = useState([]);
+    useEffect(() => {
+        async function loadViews() {
+            const componentPromises = subredditsToShow.map(async subreddit => {
+                console.log(subreddit);
+                const View = await importView3(subreddit);
                 return <View key={shortid.generate()} />;
             });
 
@@ -78,12 +117,12 @@ const Router2 = () => {
 
     return <>
         {/* <AdminLayout> */}
-            <React.Suspense fallback="Loading views...">
-                {views}
-            </React.Suspense>
+        <React.Suspense fallback="Loading views...">
+            {views}
+        </React.Suspense>
         {/* </AdminLayout> */}
     </>
 };
 
 // export default Router1 ;
-export { Router1, Router2 };
+export { Router1, Router2, Router3 };

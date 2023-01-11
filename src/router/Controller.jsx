@@ -1,8 +1,10 @@
 import React, { lazy, useEffect, useState } from 'react';
 import shortid from 'shortid';
 import { BrowserRouter, Routes, Route, Outlet, Link, useParams } from "react-router-dom";
-import  {Router1,Router2}  from "./Router";
+import  {Router1,Router2, Router3}  from "./Router";
 import AdminLayout from '../component/AdminLayout';
+import Home from '../pages/view/Home';
+import Docs from '../pages/view/Docs';
  
  
 export default function Controller() { 
@@ -26,6 +28,8 @@ export default function Controller() {
                     <Route element={<AdminLayout />}>
                         {/* <Route path="/user/:userId" element={<UserPage />} /> */}
                         <Route path="/:router1/:router2" element={<Router2 />} />
+                        {/* <Route path="/view/router2" element={<Router3 />} /> */}
+                        <Route path="/view/docs" element={<Docs />} />
                         {/* <Route path="/users" element={<UsersPage />} /> */}
                     </Route>
                     {/* </section> */}
