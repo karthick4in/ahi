@@ -23,8 +23,6 @@ const EntryLayout = ({children}) => {
 			<div className="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
 				{children}
 			</div>
-
-
 		</div>
 
 

@@ -1,6 +1,7 @@
 import React, { lazy, useEffect, useState } from 'react';
 import shortid from 'shortid';
 import { BrowserRouter, Routes, Route, Outlet, Link, useParams } from "react-router-dom";
+import AdminLayout from '../component/AdminLayout';
 
 function capitalizeFirstLetter(string) {
     return string[0].toUpperCase() + string.slice(1);
@@ -76,9 +77,11 @@ const Router2 = () => {
     }, []);
 
     return <>
-        <React.Suspense fallback="Loading views...">
-              {views} 
-        </React.Suspense>
+        {/* <AdminLayout> */}
+            <React.Suspense fallback="Loading views...">
+                {views}
+            </React.Suspense>
+        {/* </AdminLayout> */}
     </>
 };
 
