@@ -40,7 +40,8 @@ const LoginForm = () => {
                             </div>
                         </form>
 
-                        <div className="auth-option text-center pt-5">No Account? Sign up <a className="text-link" target="_self"  href="sign_up">here</a>.</div>
+                        <div className="auth-option text-center pt-5">No Account? Sign up  
+                        <Link className="text-link"  to="/sign_up">here</Link>.</div>
                     </div>
                 </div>
 

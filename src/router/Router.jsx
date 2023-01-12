@@ -37,6 +37,7 @@ const importView3 = page =>
 
 const Router1 = () => {
     // var params = 1;
+    var params = useParams();
     var userId = params.userId;
     const subredditsToShow = [
         userId
@@ -54,10 +55,10 @@ const Router1 = () => {
         }
 
         loadViews();
-    }, []);
+    }, [params]);
 
     return <>
-        {/* <h1>Pages {userId} sss</h1>; */}
+        {/* <h1>Pages {userId}  </h1>; */}
         <React.Suspense fallback="Loading views...">
             <div className="container">  {views}</div>
         </React.Suspense>
@@ -85,7 +86,7 @@ const Router3 = () => {
         }
 
         loadViews();
-    }, []);
+    }, [params]);
 
     return <>
         {/* <h1>Pages {userId} sss</h1>; */}
@@ -113,7 +114,7 @@ const Router2 = () => {
             Promise.all(componentPromises).then(setViews);
         }
         loadViews();
-    }, []);
+    }, [params]);
 
     return <>
         {/* <AdminLayout> */}

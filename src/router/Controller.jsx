@@ -6,12 +6,13 @@ import AdminLayout from '../component/AdminLayout';
 import Home from '../pages/view/Home';
 import Docs from '../pages/view/Docs';
 import Orders from '../pages/view/Orders';
+import LoginForm from '../component/LoginForm';
 
 
 export default function Controller() {
     return (
         <>
-            <BrowserRouter> 
+            <BrowserRouter>
                 <Routes>
                     {/* <Route element={<LoginLayout />}>
                         <Route path="/a" element={<SignInForm />} />
@@ -24,9 +25,11 @@ export default function Controller() {
                     </Route> */}
                     {/* <section> */}
                     <Route>
+                        {/* <Route index path="/login" element={<Router1 />} /> */}
+                        <Route path="/" element={<LoginForm />} />
                         <Route path="/:userId" element={<Router1 />} />
                     </Route>
-                    <Route  path="/view" element={<AdminLayout />}>
+                    <Route path="/view" element={<AdminLayout />}>
                         {/* <Route index element={<Orders />} /> */}
                         {/* <Route path="/user/:userId" element={<UserPage />} /> */}
                         {/* <Route path="/:router1/:router2" element={<Router2 />} /> */}
@@ -39,12 +42,4 @@ export default function Controller() {
             </BrowserRouter>
         </>
     );
-}
-const LoginLayout = () => (
-    <div /* layout props & styling */ >
-        LoginLayout
-        {/* local layout UI */}
-        <Outlet />
-        admin End
-    </div>
-);
+} 

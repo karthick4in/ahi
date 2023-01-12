@@ -348,7 +348,7 @@ var doughnutChartConfig = {
 
 // Generate charts on load
 window.addEventListener('load', function(){
-	
+	return 1;
 	var lineChart = document.getElementById('chart-line').getContext('2d');
 	window.myLine = new Chart(lineChart, lineChartConfig);
 	
