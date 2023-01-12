@@ -110,8 +110,10 @@ const Router2 = () => {
                 console.log(subreddit);
                 const View = await importView2(folder, subreddit);
                 return <View key={shortid.generate()} />;
+
             });
             Promise.all(componentPromises).then(setViews);
+            init()
         }
         loadViews();
     }, [params]);

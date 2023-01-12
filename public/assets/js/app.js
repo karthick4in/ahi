@@ -1,7 +1,8 @@
 'use strict';
 
 /* ===== Enable Bootstrap Popover (on element  ====== */
-
+var init = function(){
+	
 var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
 var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   return new bootstrap.Popover(popoverTriggerEl)
@@ -15,17 +16,17 @@ alertList.forEach(function (alert) {
 
 
 /* ===== Responsive Sidepanel ====== */
-const sidePanelToggler = document.getElementById('sidepanel-toggler'); 
-const sidePanel = document.getElementById('app-sidepanel');  
-const sidePanelDrop = document.getElementById('sidepanel-drop'); 
-const sidePanelClose = document.getElementById('sidepanel-close'); 
+var sidePanelToggler = document.getElementById('sidepanel-toggler'); 
+var sidePanel = document.getElementById('app-sidepanel');  
+var sidePanelDrop = document.getElementById('sidepanel-drop'); 
+var sidePanelClose = document.getElementById('sidepanel-close'); 
 
-window.addEventListener('load', function(){
-	// responsiveSidePanel(); 
+responsiveSidePanel(); 
+window.addEventListener('load', function(){ 
 });
 
 window.addEventListener('resize', function(){
-	// responsiveSidePanel(); 
+	responsiveSidePanel(); 
 });
 
 
@@ -87,10 +88,10 @@ searchMobileTrigger.addEventListener('click', () => {
 	} else {
 		searchMobileTriggerIcon.classList.remove('fa-times');
 		searchMobileTriggerIcon.classList.add('fa-search');
-	}
-	
-		
+	} 
 	
 });
 
 
+
+}
