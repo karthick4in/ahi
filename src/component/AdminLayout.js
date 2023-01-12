@@ -167,7 +167,7 @@ const AdminLayout = ({ children }) => {
                             <li className="nav-item">
 
                                 {/* <a className="nav-link" href="/view/docs" target="_self"> */}
-                                <Link className="nav-link" to="/view/docs">
+                                <NavLink className="nav-link" to="/view/docs">
                                     <span className="nav-icon">
                                         <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-folder" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z" />
@@ -175,7 +175,7 @@ const AdminLayout = ({ children }) => {
                                         </svg>
                                     </span>
                                     <span className="nav-link-text">Docs</span>
-                                </Link>
+                                </NavLink>
                                 {/* </a> */}
                             </li>
                             <li className="nav-item">
@@ -260,7 +260,7 @@ const AdminLayout = ({ children }) => {
                             </li>
                             <li className="nav-item">
 
-                                <a className="nav-link active" href="help.html">
+                                <a className="nav-link  " href="help.html">
                                     <span className="nav-icon">
                                         <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-question-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -320,21 +320,15 @@ const AdminLayout = ({ children }) => {
 
         <div className="app-wrapper">
 
-            <div className="app-content pt-3 p-md-3 p-lg-4">
+            <div className="app-content pt-3 p-md-3 p-lg-4 mt-5">
                 <Outlet />
             </div>
 
             <footer className="app-footer">
                 <div className="container text-center py-3">
-
                     <small className="copyright">Designed with <span className="sr-only">love</span><i className="fas fa-heart"  ></i> by <a className="app-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
-
                 </div>
-            </footer>
-
-
-
-
+            </footer> 
         </div>
     </>)
 };

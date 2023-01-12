@@ -60,7 +60,7 @@ const Router1 = () => {
     return <>
         {/* <h1>Pages {userId}  </h1>; */}
         <React.Suspense fallback="Loading views...">
-            <div className="container">  {views}</div>
+            <div className="container_main">  {views}</div>
         </React.Suspense>
     </>
 };
@@ -91,7 +91,7 @@ const Router3 = () => {
     return <>
         {/* <h1>Pages {userId} sss</h1>; */}
         <React.Suspense fallback="Loading views...">
-            <div className="container">  {views}</div>
+            <div className="container_main">  {views}</div>
         </React.Suspense>
     </>
 };

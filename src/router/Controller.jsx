@@ -6,7 +6,7 @@ import AdminLayout from '../component/AdminLayout';
 import Home from '../pages/view/Home';
 import Docs from '../pages/view/Docs';
 import Orders from '../pages/view/Orders';
-import LoginForm from '../component/LoginForm';
+import Login from '../pages/Login';
 
 
 export default function Controller() {
@@ -26,7 +26,7 @@ export default function Controller() {
                     {/* <section> */}
                     <Route>
                         {/* <Route index path="/login" element={<Router1 />} /> */}
-                        <Route path="/" element={<LoginForm />} />
+                        <Route path="/" element={<Login />} />
                         <Route path="/:userId" element={<Router1 />} />
                     </Route>
                     <Route path="/view" element={<AdminLayout />}>
@@ -41,5 +41,5 @@ export default function Controller() {
                 </Routes>
             </BrowserRouter>
         </>
-    );
+);
 } 
