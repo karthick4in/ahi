@@ -17,6 +17,7 @@ const EntryLayout = ({children}) => {
 							<div>Portal is a free Bootstrap 5 admin dashboard template. 
 								You can download and view the template license <a href="https://themes.3rdwavemedia.com/bootstrap-templates/admin-dashboard/portal-free-bootstrap-admin-dashboard-template-for-developers/">here</a>.</div>
 						</div>
+						<Link to="/view/home" >Admin Home </Link>
 						<Link to="/contact" >contact</Link>
 						<Link to="/blogs" >blogs</Link>
 						<Link to="/Home" >Home Dyn</Link>

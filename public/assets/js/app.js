@@ -21,11 +21,11 @@ const sidePanelDrop = document.getElementById('sidepanel-drop');
 const sidePanelClose = document.getElementById('sidepanel-close'); 
 
 window.addEventListener('load', function(){
-	responsiveSidePanel(); 
+	// responsiveSidePanel(); 
 });
 
 window.addEventListener('resize', function(){
-	responsiveSidePanel(); 
+	// responsiveSidePanel(); 
 });
 
 

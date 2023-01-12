@@ -131,7 +131,7 @@ const AdminLayout = ({ children }) => {
                                         <li><a className="dropdown-item" href="account.html">Account</a></li>
                                         <li><a className="dropdown-item" href="settings.html">Settings</a></li>
                                         <li><hr className="dropdown-divider" /></li>
-                                        <li><a className="dropdown-item" href="login.html">Log Out</a></li>
+                                        <li><Link className="dropdown-item" to="/login">Log Out</Link></li>
                                     </ul>
                                 </div>
                             </div>

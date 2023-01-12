@@ -1,45 +1,47 @@
 import React, { lazy, useEffect, useState } from 'react';
 import shortid from 'shortid';
-import { BrowserRouter, Routes, Route, Outlet, Link, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet, Link, useParams, Navigate } from "react-router-dom";
 import { Router1, Router2, Router3 } from "./Router";
 import AdminLayout from '../component/AdminLayout';
 import Home from '../pages/view/Home';
 import Docs from '../pages/view/Docs';
 import Orders from '../pages/view/Orders';
 import Login from '../pages/Login';
+import useAuth from "../service/Auth.jsx";
+
+function RequireAuth({ children }) {
+    const { authed } = useAuth();
+    // const location = useLocation();
+
+    return authed == "true"
+        ? children
+        : <Navigate to="/login" replace />;
+}
 
 
 export default function Controller() {
+
+
     return (
         <>
             <BrowserRouter>
                 <Routes>
-                    {/* <Route element={<LoginLayout />}>
-                        <Route path="/a" element={<SignInForm />} />
-                        <Route path="/signin" element={<SignInForm />} />
-                        <Route path="/newpassword" element={<NewPassword />} />
-                        <Route path="/phoneverification" element={<PhoneVerification />} />
-                        <Route path="/continuewithphone" element={<ContWithPhone />} />
-                        <Route path="/resetpassword" element={<ResetPassword />} />
-                        <Route path="/confirm-resetpassword" element={<ConfirmResetPassword />} />
-                    </Route> */}
-                    {/* <section> */}
                     <Route>
-                        {/* <Route index path="/login" element={<Router1 />} /> */}
                         <Route path="/" element={<Login />} />
                         <Route path="/:userId" element={<Router1 />} />
                     </Route>
-                    <Route path="/view" element={<AdminLayout />}>
-                        {/* <Route index element={<Orders />} /> */}
-                        {/* <Route path="/user/:userId" element={<UserPage />} /> */}
-                        {/* <Route path="/:router1/:router2" element={<Router2 />} /> */}
-                        <Route path=":router2" element={<Router3 />} />
-                        <Route path="docs" element={<Docs />} />
-                        {/* <Route path="/users" element={<UsersPage />} /> */}
+                    <Route path="/" element={<AdminLayout />}>
+
+                        <Route path=":router1/:router2" element={<RequireAuth><Router2 /></RequireAuth>} />
+                        {/* <Route path=":router1/:router2" render={({ staticContext }) => {
+                            debugger;
+                            if (staticContext) staticContext.status = code;
+                            return children;
+                        }} /> */}
+
                     </Route>
-                    {/* </section> */}
                 </Routes>
             </BrowserRouter>
         </>
-);
+    );
 } 
