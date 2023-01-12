@@ -1,6 +1,7 @@
 
-import { BrowserRouter, Routes, Route, Outlet, Link, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet, Link, useParams, NavLink } from "react-router-dom";
 import React, { Children, Component } from 'react';
+
 const AdminLayout = ({ children }) => {
     return (<>
         <header className="app-header fixed-top">
@@ -152,7 +153,7 @@ const AdminLayout = ({ children }) => {
                             <li className="nav-item">
 
                                 {/* <a className="nav-link" href="/view/home" target="_self"> */}
-                                <Link className="nav-link" to={"view/home"}>
+                                <NavLink className="nav-link" to={"/view/home"}>
                                     <span className="nav-icon">
                                         <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-house-door" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z" />
@@ -160,7 +161,7 @@ const AdminLayout = ({ children }) => {
                                         </svg>
                                     </span>
                                     <span className="nav-link-text">Overview</span>
-                                </Link>
+                                </NavLink>
                                 {/* </a> */}
                             </li>
                             <li className="nav-item">
@@ -180,7 +181,7 @@ const AdminLayout = ({ children }) => {
                             <li className="nav-item">
 
                                 {/* <a className="nav-link" href="orders.html"> */}
-                                <Link className="nav-link" to="/view/orders">
+                                <NavLink className="nav-link" to="/view/orders">
                                     <span className="nav-icon">
                                         <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-card-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
@@ -191,7 +192,7 @@ const AdminLayout = ({ children }) => {
                                         </svg>
                                     </span>
                                     <span className="nav-link-text">Orders</span>
-                                </Link>
+                                </NavLink>
                                 {/* </a> */}
                             </li>
                             <li className="nav-item has-submenu">
