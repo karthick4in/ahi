@@ -4,7 +4,6 @@ import * as React from "react";
 const authContext = React.createContext();
 
 function useAuth() {
-    debugger;
     const [authed, setAuthed] = React.useState(localStorage.getItem("login") || false);
   
     return {

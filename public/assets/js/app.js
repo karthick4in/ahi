@@ -1,96 +1,100 @@
 'use strict';
 
 /* ===== Enable Bootstrap Popover (on element  ====== */
-var init = function(){
-	
-var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
-var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-  return new bootstrap.Popover(popoverTriggerEl)
-})
-
-/* ==== Enable Bootstrap Alert ====== */
-var alertList = document.querySelectorAll('.alert')
-alertList.forEach(function (alert) {
-  new bootstrap.Alert(alert)
-});
-
-
-/* ===== Responsive Sidepanel ====== */
-var sidePanelToggler = document.getElementById('sidepanel-toggler'); 
-var sidePanel = document.getElementById('app-sidepanel');  
-var sidePanelDrop = document.getElementById('sidepanel-drop'); 
-var sidePanelClose = document.getElementById('sidepanel-close'); 
-
-responsiveSidePanel(); 
-window.addEventListener('load', function(){ 
-});
-
-window.addEventListener('resize', function(){
-	responsiveSidePanel(); 
-});
-
-
-function responsiveSidePanel() {
-    let w = window.innerWidth;
-	if(w >= 1200) {
-	    // if larger 
-	    //console.log('larger');
-		sidePanel.classList.remove('sidepanel-hidden');
-		sidePanel.classList.add('sidepanel-visible');
-		
-	} else {
-	    // if smaller
-	    //console.log('smaller');
-	    sidePanel.classList.remove('sidepanel-visible');
-		sidePanel.classList.add('sidepanel-hidden');
+var initToken = 0;
+var init = function () {
+	if (initToken == 1) {
+		return 1;
 	}
-};
+	initToken = 1;
+	var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
+	var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+		return new bootstrap.Popover(popoverTriggerEl)
+	})
 
-sidePanelToggler.addEventListener('click', () => {
-	if (sidePanel.classList.contains('sidepanel-visible')) {
-		console.log('visible');
-		sidePanel.classList.remove('sidepanel-visible');
-		sidePanel.classList.add('sidepanel-hidden');
-		
-	} else {
-		console.log('hidden');
-		sidePanel.classList.remove('sidepanel-hidden');
-		sidePanel.classList.add('sidepanel-visible');
-	}
-});
+	/* ==== Enable Bootstrap Alert ====== */
+	var alertList = document.querySelectorAll('.alert')
+	alertList.forEach(function (alert) {
+		new bootstrap.Alert(alert)
+	});
 
 
+	/* ===== Responsive Sidepanel ====== */
+	var sidePanelToggler = document.getElementById('sidepanel-toggler');
+	var sidePanel = document.getElementById('app-sidepanel');
+	var sidePanelDrop = document.getElementById('sidepanel-drop');
+	var sidePanelClose = document.getElementById('sidepanel-close');
 
-sidePanelClose.addEventListener('click', (e) => {
-	e.preventDefault();
-	sidePanelToggler.click();
-});
+	responsiveSidePanel();
+	window.addEventListener('load', function () {
+	});
 
-sidePanelDrop.addEventListener('click', (e) => {
-	sidePanelToggler.click();
-});
-
+	window.addEventListener('resize', function () {
+		responsiveSidePanel();
+	});
 
 
-/* ====== Mobile search ======= */
-const searchMobileTrigger = document.querySelector('.search-mobile-trigger');
-const searchBox = document.querySelector('.app-search-box');
+	function responsiveSidePanel() {
+		let w = window.innerWidth;
+		if (w >= 1200) {
+			// if larger 
+			//console.log('larger');
+			sidePanel.classList.remove('sidepanel-hidden');
+			sidePanel.classList.add('sidepanel-visible');
 
-searchMobileTrigger.addEventListener('click', () => {
+		} else {
+			// if smaller
+			//console.log('smaller');
+			sidePanel.classList.remove('sidepanel-visible');
+			sidePanel.classList.add('sidepanel-hidden');
+		}
+	};
 
-	searchBox.classList.toggle('is-visible');
-	
-	let searchMobileTriggerIcon = document.querySelector('.search-mobile-trigger-icon');
-	
-	if(searchMobileTriggerIcon.classList.contains('fa-search')) {
-		searchMobileTriggerIcon.classList.remove('fa-search');
-		searchMobileTriggerIcon.classList.add('fa-times');
-	} else {
-		searchMobileTriggerIcon.classList.remove('fa-times');
-		searchMobileTriggerIcon.classList.add('fa-search');
-	} 
-	
-});
+	sidePanelToggler.addEventListener('click', () => {
+		if (sidePanel.classList.contains('sidepanel-visible')) {
+			console.log('visible');
+			sidePanel.classList.remove('sidepanel-visible');
+			sidePanel.classList.add('sidepanel-hidden');
+
+		} else {
+			console.log('hidden');
+			sidePanel.classList.remove('sidepanel-hidden');
+			sidePanel.classList.add('sidepanel-visible');
+		}
+	});
+
+
+
+	sidePanelClose.addEventListener('click', (e) => {
+		e.preventDefault();
+		sidePanelToggler.click();
+	});
+
+	sidePanelDrop.addEventListener('click', (e) => {
+		sidePanelToggler.click();
+	});
+
+
+
+	/* ====== Mobile search ======= */
+	const searchMobileTrigger = document.querySelector('.search-mobile-trigger');
+	const searchBox = document.querySelector('.app-search-box');
+
+	searchMobileTrigger.addEventListener('click', () => {
+
+		searchBox.classList.toggle('is-visible');
+
+		let searchMobileTriggerIcon = document.querySelector('.search-mobile-trigger-icon');
+
+		if (searchMobileTriggerIcon.classList.contains('fa-search')) {
+			searchMobileTriggerIcon.classList.remove('fa-search');
+			searchMobileTriggerIcon.classList.add('fa-times');
+		} else {
+			searchMobileTriggerIcon.classList.remove('fa-times');
+			searchMobileTriggerIcon.classList.add('fa-search');
+		}
+
+	});
 
 
 
