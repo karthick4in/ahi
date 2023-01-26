@@ -7,7 +7,7 @@ import Home from '../pages/view/Home';
 import Docs from '../pages/view/Docs';
 import Orders from '../pages/view/Orders';
 import Login from '../pages/Login';
-import useAuth from "../service/Auth.jsx";
+import useAuth from "../service/Auth.js";
 
 function RequireAuth({ children }) {
     const { authed } = useAuth();
