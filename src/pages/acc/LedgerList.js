@@ -2,19 +2,14 @@ import React from 'react';
 import { Form, Field } from 'react-final-form'
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { InputSelect, InputText, InputMultiSelect, InputCheckbox, InputRadio, InputTextarea } from '../../component/Input/';
-
+import { required, mustBeNumber, minValue, maxValue, composeValidators } from '../../service/FormValidate.service'
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 const onSubmit = async values => {
     await sleep(300)
     window.alert(JSON.stringify(values, 0, 2))
 }
-const required = value => (value ? undefined : 'Required')
-const mustBeNumber = value => (isNaN(value) ? 'Must be a number' : undefined)
-const minValue = min => value =>
-    isNaN(value) || value >= min ? undefined : `Should be greater than ${min}`
-const composeValidators = (...validators) => value =>
-    validators.reduce((error, validator) => error || validator(value), undefined)
+
 const options = [{ "value": "red", label: "Red" }, { "value": "blue", label: "Blue" }, { "value": "green", label: "Green" }];
 
 export default function LedgerList() {
@@ -48,7 +43,6 @@ export default function LedgerList() {
                                     <li className="breadcrumb-item active">insert</li>
                                 </ol>
                             </div>{/*end col*/}
-
                         </div>{/*end row*/}
                     </div>{/*end page-title-box*/}
                 </div>{/*end col*/}
@@ -73,7 +67,7 @@ export default function LedgerList() {
                                 <InputMultiSelect name="country23" required={required} lable="Country Name" placeholder="Country Name" options={options} ></InputMultiSelect>
                             </div>
                             <div className="col-md-4">
-                                <InputText name="age" required={composeValidators(required, mustBeNumber, minValue(18))} lable="Age" placeholder="Age" ></InputText>
+                                <InputText name="age" required={composeValidators(required, mustBeNumber, minValue(18), maxValue(100))} lable="Age" placeholder="Age" ></InputText>
                                 <Field
                                     name="age"
                                     validate={composeValidators(required, mustBeNumber, minValue(18))}
@@ -84,7 +78,8 @@ export default function LedgerList() {
                                             <label for="floatingInput">Age <div className={`invalid-feedback ${meta.error ? "d-inline" : ""} `} > {meta.error && meta.touched && <span>({meta.error})</span>}</div> </label>
                                         </div>
                                     )}
-                                </Field></div>
+                                </Field>
+                            </div>
                             <div className="buttons">
                                 <button type="submit" className={`btn btn-primary ${submitting ? "" : " "}`}>
                                     Submit
