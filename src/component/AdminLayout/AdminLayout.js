@@ -145,7 +145,7 @@ const AdminLayout = ({ children }) => {
                     <a href="#" id="sidepanel-close" className="sidepanel-close d-xl-none">&times;</a>
                     <div className="app-branding">
                         <a className="app-logo" href="index.html">
-                            <img className="logo-icon me-2" src="assets/images/app-logo.svg" alt="logo" /><span className="logo-text">PORTAL</span></a>
+                            <img className="logo-icon me-2" src="assets/images/app-logo.svg" alt="logo" /><span className="logo-text"> AHI</span></a>
 
                     </div>
                     <nav id="app-nav-main" className="app-nav app-nav-main flex-grow-1">
@@ -191,10 +191,35 @@ const AdminLayout = ({ children }) => {
                                             <circle cx="3.5" cy="10.5" r=".5" />
                                         </svg>
                                     </span>
-                                    <span className="nav-link-text">Orders</span>
+                                    <span className="nav-link-text">To Do list</span>
                                 </NavLink>
                                 {/* </a> */}
                             </li>
+                            {/* <!-- accounts secton --> */}
+                            <li className="nav-item has-submenu">
+                                <a className="nav-link submenu-toggle" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-accounts" aria-expanded="false" aria-controls="submenu-2">
+                                    <span className="nav-icon">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-columns-gap" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fillRule="evenodd" d="M6 1H1v3h5V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12h-5v3h5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8H1v7h5V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6h-5v7h5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z" />
+                                        </svg>
+                                    </span>
+                                    <span className="nav-link-text">Accounts</span>
+                                    <span className="submenu-arrow">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                        </svg>
+                                    </span>
+                                </a>
+                                <div id="submenu-accounts" className="collapse submenu submenu-2" data-bs-parent="#menu-accordion">
+                                    <ul className="submenu-list list-unstyled">
+                                        <li className="submenu-item"><NavLink className="submenu-link" to="/acc/entry">Entry</NavLink></li>
+                                        <li className="submenu-item"><NavLink className="submenu-link" to="/acc/ledger_list">Ledger List  +</NavLink></li>
+                                        <li className="submenu-item"><NavLink className="submenu-link" to="/acc/ledger_data">Ledger Data</NavLink></li>
+                                        <li className="submenu-item"><NavLink className="submenu-link" to="/acc/books_bl">Books B/L</NavLink></li>
+                                    </ul>
+                                </div>
+                            </li>
+
                             <li className="nav-item has-submenu">
 
                                 <a className="nav-link submenu-toggle" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-1" aria-expanded="true" aria-controls="submenu-1">
@@ -221,8 +246,8 @@ const AdminLayout = ({ children }) => {
                                     </ul>
                                 </div>
                             </li>
-                            <li className="nav-item has-submenu">
 
+                            <li className="nav-item has-submenu">
                                 <a className="nav-link submenu-toggle" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-2" aria-expanded="false" aria-controls="submenu-2">
                                     <span className="nav-icon">
 
@@ -272,6 +297,8 @@ const AdminLayout = ({ children }) => {
                             </li>
                         </ul>
                     </nav>
+
+
                     <div className="app-sidepanel-footer">
                         <nav className="app-nav app-nav-footer">
                             <ul className="app-menu footer-menu list-unstyled">
@@ -319,16 +346,14 @@ const AdminLayout = ({ children }) => {
         </header>
 
         <div className="app-wrapper">
-
             <div className="app-content pt-3 p-md-3 p-lg-4 mt-5">
                 <Outlet />
             </div>
-
             <footer className="app-footer">
                 <div className="container text-center py-3">
-                    <small className="copyright">Designed with <span className="sr-only">love</span><i className="fas fa-heart"  ></i> by <a className="app-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+                    <small className="copyright">Designed  for Growing People</small>
                 </div>
-            </footer> 
+            </footer>
         </div>
     </>)
 };
