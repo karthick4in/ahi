@@ -1,30 +1,57 @@
 import React from 'react';
 import { Field } from 'react-final-form'
 
-const InputCheckbox = (props) => {
+// const InputCheckbox = (props) => {
 
+//     const { required, name, placeholder, lable, options } = props;
+//     return (<>
+//         <Field name={name} validate={required}>
+//             {({ input, meta }) => (
+//                 <div className="mb-3">
+//                     <span htmlFor={name}>{lable}</span>
+//                     <div className={`form-control form-validtion ${meta.touched ? (meta.error ? "is-invalid" : "is-valid") : ""} `} >
+//                         {options.map((option, index) => {
+//                             return (
+//                                 <>
+//                                     <Field key={index} name={name} component="input" type="checkbox" value={option.value} className="form-check-input" >
+//                                         {({ input, meta }) => (
+//                                             <div>
+//                                                 <input {...input} name={name} type="checkbox" id={'checkbox_' + option.value + '_' + index} className="form-check-input"   />
+//                                                 <span htmlFor={'checkbox-' + option.value + '-' + index}> {option.label}</span>
+//                                             </div>
+//                                         )}
+//                                     </Field>
+//                                 </>
+//                             )
+//                         })}
+//                     </div>
+//                 </div>
+//             )}
+//         </Field>
+//     </>);
+// }
+
+const InputCheckbox = (props) => {
     const { required, name, placeholder, lable, options } = props;
     return (<>
         <Field name={name} validate={required}>
             {({ input, meta }) => (
                 <>
                     <div className="mb-3">
-                        <label for={name}>{lable}</label>
+                        <label htmlFor={name}>{lable}</label>
                         <div className={`form-control form-validtion ${meta.touched ? (meta.error ? "is-invalid" : "is-valid") : ""} `} >
-                            {options.map((option, index) => {
+                            {options.length?options.map((option, index) => {
                                 return (
-                                    <>
-                                        <Field name={name} component="input" type="checkbox" value={option.value} className="form-check-input" >
-                                            {({ input, meta }) => (
-                                                <div>
-                                                    <input {...input} name={name} type="checkbox" id={'checkbox_' + option.value + '_' + index} className="form-check-input" />
-                                                    <lable for={'checkbox-' + option.value + '-' + index}> {option.label}</lable>
-                                                </div>
-                                            )}
-                                        </Field>
-                                    </>
+                                    <Field key={index} name={name} component="input" value={option.value} type="checkbox" className="form-check-input" >
+                                        {({ input, meta }) => (
+                                            <div htmlFor={'checkbox_' + option.value + '' + index}>
+                                                <input id={'checkbox_' + option.value + '' + index}  {...input} name={name} type="checkbox" className="form-check-input" />
+                                                <span htmlFor={'checkbox_' + option.value + '' + index}> {option.label}</span>
+                                            </div>
+                                        )}
+                                    </Field>
                                 )
-                            })}
+                            }):""}
                         </div>
                     </div>
                 </>
@@ -40,20 +67,20 @@ const InputRadio = (props) => {
             {({ input, meta }) => (
                 <>
                     <div className="mb-3">
-                        <label for={name}>{lable}</label>
+                        <label htmlFor={name}>{lable}</label>
                         <div className={`form-control form-validtion ${meta.touched ? (meta.error ? "is-invalid" : "is-valid") : ""} `} >
-                            {options.map((option, index) => {
+                            {options.length?options.map((option, index) => {
                                 return (
-                                    <Field name={name} component="input" value={option.value} type="radio" className="form-check-input" >
+                                    <Field key={index} name={name} component="input" value={option.value} type="radio" className="form-check-input" >
                                         {({ input, meta }) => (
-                                            <div  for={'radio' + option.value + '' + index}>
-                                                <input  id={'radio' + option.value + '' + index}  {...input} name={name} type="radio" className="form-check-input" />
-                                                <lable  for={'radio' + option.value + '' + index}> {option.label}</lable>
+                                            <div  >
+                                                <input    {...input} name={name} type="radio" className="form-check-input" />
+                                                <span htmlFor={'radio' + option.value + '' + index}> {option.label}</span>
                                             </div>
                                         )}
                                     </Field>
                                 )
-                            })}
+                            }):""}
                         </div>
                     </div>
                 </>

@@ -8,9 +8,9 @@ const InputText = (props) => {
 		<Field name={name} validate={required}>
 			{({ input, meta }) => (
 				<>
-					<div className="form-floating mb-3">
+					<div className={"form-floating   mb-3"}>
 						<input {...input} type="text" className={`form-control ${meta.touched ? (meta.error ? "is-invalid" : "is-valid") : ""} `} id="floatingInput" placeholder={placeholder}  />
-						<label for="floatingInput">{lable}<div className={`invalid-feedback ${meta.error ? "d-inline" : ""} `} > {meta.error && meta.touched && <span>({meta.error})</span>}</div> </label>
+						<label htmlFor="floatingInput">{lable}<div className={`invalid-feedback ${meta.error ? "d-inline" : ""} `} > {meta.error && meta.touched && <span>({meta.error})</span>}</div> </label>
 					</div>
 				</>
 			)}
@@ -28,7 +28,7 @@ const InputTextarea = (props) => {
 					<div className="form-floating mb-3">
 						<textarea {...input}   className={`form-control ${meta.touched ? (meta.error ? "is-invalid" : "is-valid") : ""} `} id="floatingInput" placeholder={placeholder}  >	
 						</textarea>
-						<label for="floatingInput">{lable}<div className={`invalid-feedback ${meta.error ? "d-inline" : ""} `} > {meta.error && meta.touched && <span>({meta.error})</span>}</div> </label>
+						<label htmlFor="floatingInput">{lable}<div className={`invalid-feedback ${meta.error ? "d-inline" : ""} `} > {meta.error && meta.touched && <span>({meta.error})</span>}</div> </label>
 					</div>
 				</>
 			)}

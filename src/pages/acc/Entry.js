@@ -39,6 +39,7 @@ export default function AccEntry() {
     const onSubmit = async values => {
         await sleep(300)
         window.alert(JSON.stringify(values, 0, 2))
+       
     }
 
     useEffect(() => {
@@ -91,7 +92,7 @@ export default function AccEntry() {
                                         <>
                                             <div className="form-floating mb-3">
                                                 <input {...input} type="text" className={`form-control ${meta.touched ? (meta.error ? "is-invalid" : "is-valid") : ""} `} id="floatingInput" placeholder="name@example.com" />
-                                                <label for="floatingInput">First Name <div className={`invalid-feedback ${meta.error ? "d-inline" : ""} `} > {meta.error && meta.touched && <span>({meta.error})</span>}</div> </label>
+                                                <label htmlFor="floatingInput">First Name <div className={`invalid-feedback ${meta.error ? "d-inline" : ""} `} > {meta.error && meta.touched && <span>({meta.error})</span>}</div> </label>
                                             </div>
                                         </>
                                     )}

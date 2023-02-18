@@ -1,2 +1,2 @@
-import Alert from "./Alert";
-export  {Alert} ;
+import {Alert,DialogLong} from "./Alert";
+export  {Alert,DialogLong} ;
