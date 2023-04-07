@@ -27,7 +27,8 @@ export default function LedgerData(props) {
         var fieldData = await ApiService.httpPost("/acc/acc_ledger/getInsertData", { id })
         menuOption = menuData;
         setOptionValue(menuData);
-        setInitalData(fieldData["acc_ledger"][0]);
+        fieldData["acc_ledger"][0]["type"]=fieldData["acc_ledger"][0]["type"]?.toString(); 
+        setInitalData(ApiService.data.convertString(fieldData["acc_ledger"][0]));
     }
 
     useEffect(() => {
@@ -62,6 +63,7 @@ export default function LedgerData(props) {
                         <div className="col-md-6">
                             <InputText name="name" required={required} lable="Ledger Name" placeholder="Ledger Name" ></InputText>
                             <InputText name="code" required={required} lable="Code " placeholder="Code for Reference " ></InputText>
+                            <InputRadio name="type" required={required} lable="Type" placeholder="Type" options={optionValue.acc_group} ></InputRadio>
                             <InputSelect name="type" required={required} lable="Type" placeholder="Type" options={optionValue.acc_group} ></InputSelect>
                         </div>
                         <div className="col-md-6">
@@ -70,15 +72,15 @@ export default function LedgerData(props) {
                         </div>
                         <div className="buttons">
                             <button type="submit" className={`btn btn-primary ${submitting ? "" : " "}`}>  Submit </button>
-                            <button
+                            <button   
                                 type="button"
                                 onClick={form.reset}
                                 disabled={submitting || pristine}
-                                className="btn "  >
+                                className="btn btn-secondary ms-4"  >
                                 Reset
                             </button>
                         </div>
-                        <pre>{JSON.stringify(values, 0, 2)}</pre>
+                        <pre>{  localStorage.Dev == 1  && JSON.stringify(values, 0, 2)}</pre>
                     </form>
                 </div>
             )} />

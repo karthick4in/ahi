@@ -1,5 +1,5 @@
 import React, { lazy, useEffect, useState } from 'react';
-import shortid from 'shortid';
+// import shortid from 'shortid';
 import { BrowserRouter, Routes, Route, Outlet, Link, useParams, Navigate } from "react-router-dom";
 import { Router1, Router2, Router3 } from "./Router";
 import AdminLayout from '../component/AdminLayout';

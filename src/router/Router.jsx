@@ -35,6 +35,11 @@ const importView3 = page =>
     }
     );
 
+// const shortid = {
+//     generate: () => {
+//         return Math.random() * Date.now();
+//     }
+// }
 const Router1 = () => {
     // var params = 1;
     var params = useParams();

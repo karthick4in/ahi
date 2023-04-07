@@ -32,22 +32,36 @@ export default function LedgerData(props) {
     setOptionValue(menuData);
   }
 
+  const options = [{ "value": "red", label: "Red" }, { "value": "blue", label: "Blue" }, { "value": "green", label: "Green" }];
+
   useEffect(() => {
     init();
   }, [])
 
   const onSubmit = async (values, form) => {
     event.preventDefault();
-    var formData = values;
+    let formData = values;
+    let dataType = {
+      "name": "String",
+      "group_id": "int",
+      "reconciliation": "int",
+      "code": "String",
+      "type": "int"
+    }
+    formData = ApiService.data.convertDatatype(formData, dataType)
     var resData = await ApiService.httpPost("/acc/acc_ledger/setInsertData", formData)
-    form.reset()
+
     var alertData = { Headers: "Success", Msg: "Ledger Inserted Successfull.  ID -" + resData?.acc_ledger?.insertId }
-    if (resData.status == 206) {
-      alertData = { Headers: "Error", Msg: JSON.stringify(resData.error) }
+    if (resData.status == 200) {
+      form.reset()
+    }
+    else if (resData.status == 206) {
+      debugger;
+      alertData = { Headers: "Error", Msg: JSON.stringify(resData?.["acc_ledger"].error) }
     }
     console.log(resData);
     var random = Math.random();
-    setMyAleryObj(<Alert key={random} data={alertData}></Alert>)
+    setMyAleryObj(<Alert key={random} data={alertData} ></Alert>)
   }
 
   return (<>
@@ -79,7 +93,7 @@ export default function LedgerData(props) {
                 Reset
               </button>
             </div>
-            <pre>{JSON.stringify(values, 0, 2)}</pre>
+            <pre>{  localStorage.Dev == 1  && JSON.stringify(values, 0, 2)}</pre>
           </form>
         </div>
       )} />
